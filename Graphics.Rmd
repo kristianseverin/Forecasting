@@ -1,0 +1,14 @@
+---
+title: "Graphics"
+output: html_document
+date: "2023-03-06"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+pacman::p_load(fpp3)
+```
+
