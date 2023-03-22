@@ -9,6 +9,39 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
+# load libraries
 pacman::p_load(fpp3)
+```
+
+```{r}
+# Making tsibble object with measurements and indexes
+y <- tsibble(
+  Year = 2015:2019,
+  Observation = c(123, 39, 78, 52, 110),
+  index = Year
+)
+```
+
+
+Playing around with dplyr functions on a tsibble object
+```{r}
+PBS  # dataset from fpp3
+
+PBS |>
+  filter(ATC2 == "A10")  # dplyr functions work on tsibble objects
+
+PBS |>
+  filter(ATC2 == "A10") |>
+  select(Month, Concession, Type, Cost)  # select
+
+PBS |>
+  filter(ATC2 == "A10") |>
+  select(Month, Concession, Type, Cost) |>
+  summarise(TotalC = sum(Cost))
+
+PBS %>% 
+  filter(ATC2 == "A10") %>% 
+  select(Month, Concession, Type, Cost) %>% 
+  summarise(TotalC = sum(Cost))
 ```
 
